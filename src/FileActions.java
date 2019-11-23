@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class FileActions
 {
-    int[] ArrayData;
+   public int[] ArrayData;
 
     public void ReadFile(String FileToSort,int size) throws IOException {
         ArrayData = new int[size];
@@ -23,11 +23,21 @@ public class FileActions
             }
         }
     }
-    public void WriteFile(String SortedFile) throws IOException {
+    public void WriteFile(String SortedFile,String Directory) throws IOException {
         File file = new File(SortedFile);
+        File directory = new File(String.valueOf(Directory));
+        if(!directory.exists())
+        {
+            directory.mkdir();
+            if(!file.exists())
+            {
+                file.getParentFile().mkdir();
+                file.createNewFile();
+            }
+        }
         if(!file.exists())
             file.createNewFile();
-        PrintWriter pw = new PrintWriter(SortedFile+"(Sorted).txt");
+        PrintWriter pw = new PrintWriter(Directory+"/"+SortedFile+"(Sorted).txt");
         for(int i = 0;i!=ArrayData.length;i++)
         pw.print(ArrayData[i]+", ");
         pw.close();

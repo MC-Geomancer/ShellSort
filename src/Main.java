@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 
 public class Main
@@ -15,10 +16,24 @@ public class Main
                 timeCounter.setSortStart(i);
                 ShellSort.ShellSort(fileActions.ArrayData, fileActions.ArrayData.length);
                 timeCounter.setSortFinish(i);
-                fileActions.WriteFile(testFiles.TestFileName[i]);
+                fileActions.WriteFile(testFiles.TestFileName[i],"ShellSort");
             }
-
-
+        for(int i = 0;i < 12 ;)
+            for(int size = 100;size<=1000000;i++,size*=100) {
+                fileActions.ReadFile(testFiles.TestFileName[i], size);
+                timeCounter.setSortStart(i);
+                SortsForCompare.InsertionSort(fileActions.ArrayData);
+                timeCounter.setSortFinish(i);
+                fileActions.WriteFile(testFiles.TestFileName[i],"InsertionSort");
+            }
+        for(int i = 0;i < 12 ;)
+            for(int size = 100;size<=1000000;i++,size*=100) {
+                fileActions.ReadFile(testFiles.TestFileName[i], size);
+                timeCounter.setSortStart(i);
+                SortsForCompare.quickSort(fileActions.ArrayData,0,size-1);
+                timeCounter.setSortFinish(i);
+                fileActions.WriteFile(testFiles.TestFileName[i],"QuickSort");
+            }
 
        // manageFiles.DeleteFiles();
     }
