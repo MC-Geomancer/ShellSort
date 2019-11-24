@@ -121,7 +121,7 @@ public class TestFiles
             pw = new PrintWriter(ShortHalfSorted);
             for(int i = 0;i<100;i++)
             {
-                if(i>44&&i<74)
+                if(i>49)
                     pw.print(i + " ");
                 else
                 {
@@ -143,7 +143,7 @@ public class TestFiles
             pw = new PrintWriter(MidHalfSorted);
             for(int i = 0;i<10000;i++)
             {
-                if(i>4999&&i<7499)
+                if(i>4999)
                     pw.print(i + " ");
                 else
                 {
@@ -165,7 +165,7 @@ public class TestFiles
             pw = new PrintWriter(LongHalfSorted);
             for(int i = 0;i<1000000;i++)
             {
-                if(i>499999&&i<749999)
+                if(i>499999)
                     pw.print(i + " ");
                 else
                 {

@@ -10,6 +10,8 @@ public class Main
         TimeCounter timeCounter = new TimeCounter();
         TestFiles testFiles = new TestFiles();
         manageFiles.CreateNewFiles();
+        ResultsTable resultsTable = new ResultsTable();
+        resultsTable.ResultTable(testFiles.TestFileName);
         for(int i = 0;i < 12 ;)
             for(int size = 100;size<=1000000;i++,size*=100) {
                 fileActions.ReadFile(testFiles.TestFileName[i], size);
@@ -18,14 +20,8 @@ public class Main
                 timeCounter.setSortFinish(i);
                 fileActions.WriteFile(testFiles.TestFileName[i],"ShellSort");
             }
-        for(int i = 0;i < 12 ;)
-            for(int size = 100;size<=1000000;i++,size*=100) {
-                fileActions.ReadFile(testFiles.TestFileName[i], size);
-                timeCounter.setSortStart(i);
-                SortsForCompare.InsertionSort(fileActions.ArrayData);
-                timeCounter.setSortFinish(i);
-                fileActions.WriteFile(testFiles.TestFileName[i],"InsertionSort");
-            }
+        resultsTable.ShowResult(timeCounter.SortResult,"ShellSort");
+
         for(int i = 0;i < 12 ;)
             for(int size = 100;size<=1000000;i++,size*=100) {
                 fileActions.ReadFile(testFiles.TestFileName[i], size);
@@ -34,8 +30,17 @@ public class Main
                 timeCounter.setSortFinish(i);
                 fileActions.WriteFile(testFiles.TestFileName[i],"QuickSort");
             }
+        resultsTable.ShowResult(timeCounter.SortResult,"QuickSort");
+        for(int i = 0;i < 12 ;)
+            for(int size = 100;size<=1000000;i++,size*=100) {
+                fileActions.ReadFile(testFiles.TestFileName[i], size);
+                timeCounter.setSortStart(i);
+                SortsForCompare.InsertionSort(fileActions.ArrayData);
+                timeCounter.setSortFinish(i);
+                fileActions.WriteFile(testFiles.TestFileName[i],"InsertionSort");
+            }
+        resultsTable.ShowResult(timeCounter.SortResult,"Insertion");
 
-       // manageFiles.DeleteFiles();
     }
     static class ManageFiles
     {
